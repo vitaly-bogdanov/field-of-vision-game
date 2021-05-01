@@ -4,6 +4,7 @@ const fs = require('fs');
 
 const prisma = new PrismaClient();
 
+// парсим docx и берем от туда слова для игры, вносим в дб
 (async () => {
     const words = fs.readFileSync('./words.docx', {encoding: 'utf8'})
         .split('\n')
