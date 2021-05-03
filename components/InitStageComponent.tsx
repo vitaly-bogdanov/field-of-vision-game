@@ -1,10 +1,11 @@
-import { FC, Dispatch, SetStateAction } from 'react';
+import { FC, MouseEvent } from 'react';
 import MainLayout from '../layouts/MainLayout';
 import Container from './styled/Container';
 import Box from './styled/Box';
 import RangeComponent from './RangeComponent';
 import InputTimeComponent from './InputTimeComponent';
 import styled from '@emotion/styled';
+import ButtonComponent from '../components/ButtonComponent';
 
 const Title = styled.h1`
     font-size: 64px;
@@ -24,18 +25,15 @@ const Grid = styled.div`
 interface Props {
     setWordsCount(value: number): void
     wordsCount: number
-
     setStartDistance(value: number): void
     startDistance: number
-
     setLettersCount(value: number): void
     lettersCount: number
-
     setDistanceIncrease(value: number): void
     distanceIncrease: number
-
     setTime(value: number): void
     time: number
+    run(event: MouseEvent<HTMLButtonElement>): void
 }
 
 const InitStageComponent: FC<Props> = ({ 
@@ -48,7 +46,8 @@ const InitStageComponent: FC<Props> = ({
     startDistance,
     lettersCount,
     distanceIncrease,
-    time
+    time,
+    run
 }) => (
     <MainLayout title='Начнем'>
         <header>
@@ -62,6 +61,7 @@ const InitStageComponent: FC<Props> = ({
                     <Box><RangeComponent title="Сколько букв в словах" min={3} max={12} value={lettersCount} step={1} setValue={setLettersCount} /></Box>
                     <Box><RangeComponent title="Увеличение растояния" min={5} max={40} value={distanceIncrease} step={5} setValue={setDistanceIncrease} /></Box>
                     <Box><InputTimeComponent setTime={setTime} time={time} /></Box>
+                    <ButtonComponent run={run} />
                 </Grid>
             </Container>
         </main>

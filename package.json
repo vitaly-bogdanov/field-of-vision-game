@@ -9,6 +9,7 @@
     "ts-node": "ts-node --compiler-options '{\"module\":\"commonjs\"}'"
   },
   "dependencies": {
+    "@emotion/react": "^11.1.5",
     "@emotion/styled": "^11.3.0",
     "@prisma/client": "^2.21.2",
     "next": "10.2.0",

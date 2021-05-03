@@ -10,6 +10,8 @@ const NumberNotes = styled.div`
     margin-bottom: 15px;
     font-size: 38px;
     font-weight: bold;
+    padding-left: 10px;
+    padding-right: -15px;
 `;
 
 const RangePanel = styled.div`
@@ -41,7 +43,7 @@ const RangeComponent: FC<Props> = ({ title, value, min, max, step, setValue }) =
         <Title>{title}</Title>
         <RangePanel>
             <NumberNotes>
-                { rangeCreatorHelper(min, max, step).map(number => <span>{number}</span>) }
+                { rangeCreatorHelper(min, max, step).map((number, index) => <span key={index}>{number}</span>) }
             </NumberNotes>
             <Range type="range" value={value} min={min} max={max} step={step} onChange={event => setValue(parseInt(event.target.value))} />
         </RangePanel>
